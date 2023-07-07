@@ -8,8 +8,12 @@ import java.util.List;
 
 public interface EmployeeServiceInterface {
     String startDisplay();
+
     Employee add(String firstname, String lastname, int salary, int departament);
+
     Employee remove(String firstname, String lastname);
+
     Employee get(String firstname, String lastname);
+
     Collection<Employee> getAll();
 }

@@ -10,15 +10,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class DepartamentService implements DepartamentServiceInterface{
-private final EmployeeService employeeService;
+public class DepartmentService implements DepartmentServiceInterface {
+    private final EmployeeService employeeService;
 
-    public DepartamentService(EmployeeService employeeService) {
+    public DepartmentService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
     @Override
-    public String displayStart(){
+    public String displayStart() {
         return "<h1>Добро пожаловать</h1>";
     }
 
@@ -26,7 +26,7 @@ private final EmployeeService employeeService;
     public Employee maxSalaryByDepartment(int department) {
         return employeeService.getAll()
                 .stream()
-                .filter(employee -> employee.getDepartament() == department)
+                .filter(employee -> employee.getDepartment() == department)
                 .max(Comparator.comparingInt(employee -> employee.getSalary()))
                 .orElseThrow(() -> new IllegalArgumentException("Сотрудник не найден"));
     }
@@ -35,7 +35,7 @@ private final EmployeeService employeeService;
     public Employee minSalaryByDepartment(int department) {
         return employeeService.getAll()
                 .stream()
-                .filter(employee -> employee.getDepartament() == department)
+                .filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparingInt(employee -> employee.getSalary()))
                 .orElseThrow(() -> new IllegalArgumentException("Сотрудник не найден"));
     }
@@ -44,7 +44,7 @@ private final EmployeeService employeeService;
     public Collection<Employee> printByDepartment(int department) {
         return employeeService.getAll()
                 .stream()
-                .filter(employee -> employee.getDepartament() == department)
+                .filter(employee -> employee.getDepartment() == department)
                 .collect(Collectors.toList());
     }
 
@@ -52,6 +52,6 @@ private final EmployeeService employeeService;
     public Map<Integer, List<Employee>> printAllByDepartment() {
         return employeeService.getAll()
                 .stream()
-                .collect(Collectors.groupingBy(employee -> employee.getDepartament()));
+                .collect(Collectors.groupingBy(employee -> employee.getDepartment()));
     }
 }

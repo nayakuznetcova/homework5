@@ -6,17 +6,17 @@ public class Employee {
     private String firstname;
     private String lastname;
     private int salary;
-    private int departament;
+    private int department;
 
-    public Employee(String firstname, String lastname, int salary, int departament) {
+    public Employee(String firstname, String lastname, int salary, int department) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.salary = salary;
-        this.departament = departament;
+        this.department = department;
     }
 
-    public String search(){
-        return firstname+lastname;
+    public String search() {
+        return firstname + lastname;
     }
 
     public String getFirstname() {
@@ -43,12 +43,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int getDepartament() {
-        return departament;
+    public int getDepartment() {
+        return department;
     }
 
-    public void setDepartament(int departament) {
-        this.departament = departament;
+    public void setDepartment(int department) {
+        this.department = department;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return salary == employee.salary && departament == employee.departament && Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname);
+        return salary == employee.salary && department == employee.department && Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstname, lastname, salary, departament);
+        return Objects.hash(firstname, lastname, salary, department);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Employee {
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", salary=" + salary +
-                ", departament=" + departament +
+                ", department=" + department +
                 '}';
     }
 }

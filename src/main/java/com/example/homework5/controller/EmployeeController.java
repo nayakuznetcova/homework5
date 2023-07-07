@@ -19,39 +19,39 @@ public class EmployeeController {
     }
 
     @GetMapping()
-    public String start(){
+    public String start() {
         return employeeServiceInterface.startDisplay();
     }
 
-    @GetMapping(path="/add")
-    public String add(@RequestParam ("firstname") String firstname, @RequestParam ("lastname") String lastname, @RequestParam("salary") int salary, @RequestParam("departament") int departament){
+    @GetMapping(path = "/add")
+    public String add(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("salary") int salary, @RequestParam("department") int department) {
         try {
-            return employeeServiceInterface.add(firstname, lastname, salary, departament).toString();
-        }catch (EmployeeStorageIsFullException | EmployeeAlreadyAddedException e){
+            return employeeServiceInterface.add(firstname, lastname, salary, department).toString();
+        } catch (EmployeeStorageIsFullException | EmployeeAlreadyAddedException e) {
             return e.getMessage();
         }
     }
 
     @GetMapping("/remove")
-    public String remove(@RequestParam ("firstname") String firstname, @RequestParam ("lastname") String lastname){
+    public String remove(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname) {
         try {
             return "result " + employeeServiceInterface.remove(firstname, lastname);
-        }catch (EmployeeNotFoundException e){
+        } catch (EmployeeNotFoundException e) {
             return e.getMessage();
         }
     }
 
     @GetMapping("/get")
-    public String get (@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname){
+    public String get(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname) {
         try {
             return employeeServiceInterface.get(firstname, lastname).toString();
-        }catch (EmployeeNotFoundException e){
+        } catch (EmployeeNotFoundException e) {
             return e.getMessage();
         }
     }
 
     @GetMapping("/getall")
-    public String getAll(){
+    public String getAll() {
         return employeeServiceInterface.getAll().toString();
     }
 
