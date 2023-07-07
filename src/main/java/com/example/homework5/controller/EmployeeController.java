@@ -24,27 +24,27 @@ public class EmployeeController {
     }
 
     @GetMapping(path="/add")
-    public String add(@RequestParam ("lastname") String lastname, @RequestParam ("surname") String surname){
+    public String add(@RequestParam ("firstname") String firstname, @RequestParam ("lastname") String lastname, @RequestParam("salary") int salary, @RequestParam("departament") int departament){
         try {
-            return employeeServiceInterface.add(lastname, surname).toString();
+            return employeeServiceInterface.add(firstname, lastname, salary, departament).toString();
         }catch (EmployeeStorageIsFullException | EmployeeAlreadyAddedException e){
             return e.getMessage();
         }
     }
 
     @GetMapping("/remove")
-    public String remove(@RequestParam ("lastname") String lastname, @RequestParam ("surname") String surname){
+    public String remove(@RequestParam ("firstname") String firstname, @RequestParam ("lastname") String lastname){
         try {
-            return "result " + employeeServiceInterface.remove(lastname, surname);
+            return "result " + employeeServiceInterface.remove(firstname, lastname);
         }catch (EmployeeNotFoundException e){
             return e.getMessage();
         }
     }
 
     @GetMapping("/get")
-    public String get (@RequestParam("number") int number){
+    public String get (@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname){
         try {
-            return employeeServiceInterface.get(number).toString();
+            return employeeServiceInterface.get(firstname, lastname).toString();
         }catch (EmployeeNotFoundException e){
             return e.getMessage();
         }
@@ -55,6 +55,4 @@ public class EmployeeController {
         return employeeServiceInterface.getAll().toString();
     }
 
-
-    //todo создать новую папку с исключениями
 }

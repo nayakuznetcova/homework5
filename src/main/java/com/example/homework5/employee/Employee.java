@@ -5,10 +5,18 @@ import java.util.Objects;
 public class Employee {
     private String firstname;
     private String lastname;
+    private int salary;
+    private int departament;
 
-    public Employee(String firstname, String lastname) {
+    public Employee(String firstname, String lastname, int salary, int departament) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.salary = salary;
+        this.departament = departament;
+    }
+
+    public String search(){
+        return firstname+lastname;
     }
 
     public String getFirstname() {
@@ -27,17 +35,33 @@ public class Employee {
         this.lastname = lastname;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getDepartament() {
+        return departament;
+    }
+
+    public void setDepartament(int departament) {
+        this.departament = departament;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname);
+        return salary == employee.salary && departament == employee.departament && Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstname, lastname);
+        return Objects.hash(firstname, lastname, salary, departament);
     }
 
     @Override
@@ -45,6 +69,8 @@ public class Employee {
         return "Employee{" +
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", salary=" + salary +
+                ", departament=" + departament +
                 '}';
     }
 }
