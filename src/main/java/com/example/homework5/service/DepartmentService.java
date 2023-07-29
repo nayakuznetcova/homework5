@@ -54,4 +54,5 @@ public class DepartmentService implements DepartmentServiceInterface {
                 .stream()
                 .collect(Collectors.groupingBy(employee -> employee.getDepartment()));
     }
+
 }
